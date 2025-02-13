@@ -2,11 +2,13 @@ import random
 import time
 import os
 
+# function for player
 class Player:
     def __init__(self, name):
         self.name = name
         self.alive = True
 
+    # fuction for player to take turn
     def take_turn(self, chamber, is_ai=False, punish=False):
         if not self.alive:
             return
@@ -27,6 +29,7 @@ class Player:
         else:
             print(f"\n🎉 {self.name} hat überlebt!")
 
+# function for game play
 def play_game(players, num_bullets, punish=False):
     chambers = [0] * 6
     for pos in random.sample(range(6), num_bullets):
@@ -45,6 +48,7 @@ def play_game(players, num_bullets, punish=False):
     winner = next(player for player in players if player.alive)
     print(f"\n🎉 {winner.name} gewinnt! Herzlichen Glückwunsch!")
 
+# fuction for input validation
 def get_valid_input(prompt, valid_range):
     while True:
         try:
@@ -55,6 +59,7 @@ def get_valid_input(prompt, valid_range):
         except ValueError:
             print("Ungültige Eingabe. Bitte gib eine Zahl ein.")
 
+# main function
 def main():
     while True:
         print("Welcome to russian roulette!")
